@@ -5,9 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "Registrations")
 public class Registration {
+	
+	
 	@Id
 	private String email;
 

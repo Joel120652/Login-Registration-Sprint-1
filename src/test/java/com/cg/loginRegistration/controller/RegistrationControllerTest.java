@@ -24,6 +24,8 @@ class RegistrationControllerTest {
 	@MockBean
 	private RegistrationServiceImpl registrationserviceImpl;
 	
+	/*Employee Registration Test Case*/
+	
 	@Test
 	void EmployeeRegistrationTest() throws Exception {
 		
@@ -39,19 +41,5 @@ class RegistrationControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isCreated());
 	}
 	
-	@Test
-	void UserRegistrationTest() throws Exception {
-		
-		Registration reg = new Registration();
-		
-		reg.setFirstname("jay");
-		
-		Mockito.when(registrationserviceImpl.UserRegistration(Mockito.any())).thenReturn("str");
-		
-		mockMvc.perform(post("/api/Registration/UserRegistration")
-											.contentType(MediaType.APPLICATION_JSON)
-											.content(new ObjectMapper().writeValueAsString(reg)))
-				.andExpect(MockMvcResultMatchers.status().isCreated());
-	}
 
 }

@@ -13,6 +13,9 @@ public class RegistrationServiceImpl implements IRegistrationService {
 	@Autowired
 	private IRegistrationRepository iRegistrationRepository;
 
+	
+	/*Employee Registration Validation*/
+	
 	@Override
 	public String EmployeeRegistration(Registration registration) throws RegistrationException {
 
@@ -22,7 +25,7 @@ public class RegistrationServiceImpl implements IRegistrationService {
 		if (!(registration.getEmail().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"))) {
 			throw new RegistrationException("Give valid Email");
 		}
-		if (!(registration.getPassword().matches("^[A-Za-z0-9@.*#$!]{6,10}$"))) {
+		if (!(registration.getPassword().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"))) {
 			throw new RegistrationException("Give valid password");
 
 		}
@@ -30,22 +33,6 @@ public class RegistrationServiceImpl implements IRegistrationService {
 		iRegistrationRepository.save(registration);
 		return "Registration Successful";
 	}
-
-	@Override
-	public String UserRegistration(Registration registration) throws RegistrationException {
-		if (iRegistrationRepository.existsById(registration.getEmail())) {
-			throw new RegistrationException("Email already Exist");
-		}
-		if (!(registration.getEmail().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"))) {
-			throw new RegistrationException("Give valid Email");
-		}
-		if (!(registration.getPassword().matches("^[A-Za-z0-9@.*#$!]{6,10}$"))) {
-			throw new RegistrationException("Give valid password");
-
-		}
-
-		iRegistrationRepository.save(registration);
-		return "User Registration Successful";
-	}
-
+	
+	
 }

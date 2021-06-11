@@ -9,7 +9,11 @@ public interface IUserService {
 	
 	public String AdminLogin(User user) throws UserException;
 
-	public String UserLogout(User user) throws UserException;
+	//public String UserLogout(User user) throws UserException;
+	
+	public String UserLogout(String userId) throws UserException;
+	
+	
 	
 	public String AdminLogout(User user) throws UserException;
 	

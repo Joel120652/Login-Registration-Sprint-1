@@ -18,6 +18,8 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IRegistrationRepository iRegistrationRepository;
 
+	/*User Login Validation*/
+	
 	@Override
 	public String UserLogin(User user) throws UserException {
 
@@ -40,8 +42,12 @@ public class UserServiceImpl implements IUserService {
 		return "Login Successful";
 	}
 
-	@Override
+	/*User Logout Validation*/
+	
+	/*@Override
 	public String UserLogout(User user) throws UserException {
+		
+		
 
 		if (!iUserRepository.existsById(user.getUserId())) {
 			throw new UserException("UserId Invalid");
@@ -60,8 +66,19 @@ public class UserServiceImpl implements IUserService {
 		iUserRepository.delete(dbUser);
 
 		return "Logout Successful";
+	}*/
+	
+	@Override
+	public String UserLogout(String userId) throws UserException {
+		
+		iUserRepository.deleteById(userId);
+
+		return "Logout Successful";
 	}
 
+
+	/*Admin Login Validation*/
+	
 	@Override
 	public String AdminLogin(User user) throws UserException {
 		if (!iRegistrationRepository.existsById(user.getUserId())) {
@@ -83,6 +100,8 @@ public class UserServiceImpl implements IUserService {
 		return "Admin Login Successful";
 	}
 
+	/*Admin Logout Validation*/
+	
 	@Override
 	public String AdminLogout(User user) throws UserException {
 	
