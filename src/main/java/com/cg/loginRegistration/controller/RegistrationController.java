@@ -26,6 +26,7 @@ public class RegistrationController {
 	public ResponseEntity<String> EmployeeRegistration(@RequestBody Registration registration) throws RegistrationException {
 		String str = registrationServiceImpl.EmployeeRegistration(registration);
 		return new ResponseEntity<String>(str, HttpStatus.CREATED);
+
 	}
 
 }
